@@ -61,16 +61,17 @@
 ### Preppa
 
 - Skapa en layout som grund för alla sidor ✅
-- Lägg till head för att kunna lägga till title - tänk på att den ska vara dynamisk. Kunna skicka in props.
+- Lägg till head för att kunna lägga till title - tänk på att den ska vara dynamisk. Kunna skicka in props. ✅
 
 ### Startsida
 
-- H1: "Boka ett rum"
-- Knapp: "Boka" → länkas till "Välj en tid"-vyn
+- H1: "Boka ett rum" - KOMPONENT!! ✅
+- Knapp: "Boka" → länkas till "Välj en tid"-vyn ✅
 
-### Välj en tid
 
-- H1: "Välj en tid"
+### Sida: Välj en tid
+
+- H1: "Välj en tid" ✅
 - Dropdown med fem olika mötesrum (checkboxar)
   - Skapa testdata för att visa upp fem olika mötesrum (från db)
   - Knappar: "Välj" & "Avmarkera"
@@ -101,3 +102,4 @@
 - Steg för steg
 - Snyggt, mobilanpassat, tillgängligt
 - Det ska kännas rätt
+
