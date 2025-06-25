@@ -15,4 +15,14 @@ model MeetingRoom {
   name        String
   capacity    Int
   createdAt   DateTime @default(now())
+  availableSlots    AvailableSlot[]
+}
+
+model AvailableSlot {
+  id          Int     @id @default(autoincrement())
+  room        MeetingRoom    @relation(fields: [roomId], references: [id])
+  roomId      Int
+  date        DateTime
+  startTime   String
+  endTime     String
 }
