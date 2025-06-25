@@ -88,15 +88,18 @@
 
 - Skapa en Dropdown komponent
 - Dropdown med fem olika mötesrum (checkboxar)
-  - Skapa checkboxar
-  - Hämta testdata från db -> visa i ordning. minst antal personer först
-  - Select label - Uppdateras när klienten väljer alt.
+  - Testa att hämta data ✅
+  - Skapa checkboxar ✅
+  - Visa data i rätt ordning. minst antal personer först ✅
+  - Select label - Uppdateras när klienten väljer alt. ✅
     - Mötesrum när inget är valt
     - ett valt rum
     - 3 valda rum när det är fler än 1
-  - Knappar: "Välj" & "Avmarkera"
+  - Knappar: "Välj" & "Avmarkera" ✅
+  - Lägga till pilikon till höger om label ✅
 
-
+- Installera clsx för att kombinera klasser - tailwind-merge ✅
+[https://akhilaariyachandra.com/blog/using-clsx-or-classnames-with-tailwind-merge]
 
 
 - Höger/Vänster pilknappar för att bläddra bland datum
@@ -142,3 +145,10 @@ https://pris.ly/d/getting-started
 
 ## Mini todos
 - Uppdatera readme - lägga till beskrivning gällande db
+- När man avmarkerar alla checkboxar bör man antingen ändra text på "välj" till stäng eller ha ett kryss för att stänga
+
+
+## Problem
+- problem med prisma. lyckas inte hämta data från db /api/rooms 
+Lösning: Prisma genererar klienten till src/generated/prisma istället för till @prisma/client. Ta bort den raden från prisma filen i lib.
+- får fel när jag klickar i checkbox i ett mötesrum
