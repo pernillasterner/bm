@@ -1,9 +1,3 @@
-{/* <h1 className="text-7xl sm:text-[5rem] tracking-[0.03em] leading-[1]] mt-16">
-Boka ett rum
-</h1> */}
-
-// skicka in size, as and className
-
 type HeadingProps = {
   children: React.ReactNode;
   size?: "lg" | "md" | "sm";
@@ -24,11 +18,9 @@ export default function Heading({
     sm: "text-2xl",
   }
 
-
   return (
     <Tag className={`${sizeClasses[size]} ${className}`}>
       {children}
     </Tag>
   )
-
 };
