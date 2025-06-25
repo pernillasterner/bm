@@ -1,3 +1,4 @@
+import Heading from "./components/Heading";
 import Layout from "./components/Layout";
 
 export default function Home() {
@@ -8,6 +9,7 @@ export default function Home() {
           <h1 className="text-7xl sm:text-[5rem] tracking-[0.03em] leading-[1]] mt-16">
             Boka ett rum
           </h1>
+          <Heading>Boka ett rum</Heading>
 
           {/* 
           skapa en komponent
