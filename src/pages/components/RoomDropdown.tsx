@@ -31,19 +31,18 @@ export default function RoomDropdown() {
 
   return (
     <div className="relative w-full max-w-xs my-4">
-      <h3 className="text-[color:var(--gray-850)]">Mötesplats</h3>
+      <button
+        type="button"
+        className="w-fit border [border-color:var(--gray-400)] rounded-lg py-2 px-4 shadow-sm text-[color:var(--gray-850)]"
+        aria-haspopup="listbox"
+      >
+        Mötesrum
+      </button>
+      
 
-      <ul className="space-y-2">
-        {rooms.map((room) => (
-          <li key={room.id} className="text-sm text-gray-800">
-            {room.name} ({room.id} personer)
-          </li>
-        ))}
-      </ul>
-
-      <div className="flex justify-between gap-2 px-4 pt-2 border-t border-gray-200">
-        <Button>Välj</Button>
-        <Button className="bg-[var(--gray-600)]">Avmarkera</Button>
+      <div className="flex justify-between gap-2 px-4 pt-2">
+        <Button ariaLabel="Välj rum">Välj</Button>
+        <Button ariaLabel="Avmarkera" className="bg-[var(--gray-600)]">Avmarkera</Button>
       </div>
     </div>
   )
