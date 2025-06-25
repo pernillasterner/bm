@@ -1,3 +1,5 @@
+import { useState } from "react";
+import { useRouter } from "next/router";
 import AvailableSlots from "./components/AvailableSlots";
 import Button from "./components/Button";
 import Heading from "./components/Heading";
@@ -5,11 +7,18 @@ import Layout from "./components/Layout";
 import RoomDropdown from "./components/RoomDropdown";
 
 export default function SelectTime() {
+  const [selectedSlotId, setSelectedSlotId] = useState<number | null>(null);
+  const [selectedRoomIds, setSelectedRoomIds] = useState<number[]>([]);
+  const router = useRouter();
+
+  function handleNext() {
+    if (!selectedSlotId) return;
+    localStorage.setItem("selectedSlotId", selectedSlotId.toString());
+    router.push("/enter-name");
+  }
 
   function handleRoomSelect(ids: number[]) {
-    console.log("valda rum", ids);
-
-    // spara i db eller localstorage
+    setSelectedRoomIds(ids);
   }
 
   return (
@@ -18,16 +27,18 @@ export default function SelectTime() {
 
       <RoomDropdown onSelect={handleRoomSelect} />
 
-      {/* Höger/Vänster pilknappar för att bläddra bland datum  */}
-      {/* Visning av datumspann (ex. 18 okt – 20 okt) */}
+      <AvailableSlots 
+        onSelect={(id) => setSelectedSlotId(id)}
+        selectedRoomIds={selectedRoomIds}
+      />
 
-
-      {/* Kalender med tre kolumner (en per dag) */}
-      <AvailableSlots />
-
-      {/* Knapp till nästa vy: "Nästa" */}
-      <Button ariaLabel="Gå till nästa sida">Nästa</Button>
+      <Button 
+        ariaLabel="Gå till nästa sida" 
+        onClick={handleNext} 
+        disabled={!selectedSlotId}
+      >
+          Nästa
+      </Button>
     </Layout>
   )
 }
-

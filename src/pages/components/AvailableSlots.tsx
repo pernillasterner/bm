@@ -12,6 +12,11 @@ type AvailableSlot = {
   endTime: string;
 }
 
+type Props = {
+  onSelect: (id: number) => void;
+  selectedRoomIds: number[];
+}
+
 function formatDate(dateStr: string) {
   const date = new Date(dateStr);
   return date.toLocaleDateString("sv-SE", {
@@ -20,9 +25,16 @@ function formatDate(dateStr: string) {
   })
 }
 
-export default function AvailableSlots() {
+export default function AvailableSlots({ onSelect, selectedRoomIds }: Props) {
   const [slots, setSlots] = useState<AvailableSlot[]>([]);
   const [groupedSlots, setGroupedSlots] = useState<Record<string, AvailableSlot[]>>({});
+  const [selectedSlotId, setSelectedSlotId] = useState<number | null>(null);
+
+  function handleSelect(id: number) {
+    setSelectedSlotId(id);
+    onSelect(id); // Skicka upp slotId till select-time
+  }
+  
 
   // Get data from api
   useEffect(() => {
@@ -31,11 +43,16 @@ export default function AvailableSlots() {
         const res = await fetch("/api/slots");
         if (!res.ok) throw new Error("Error fetching meeting slots");
         const data = await res.json();
-        setSlots(data); 
+        setSlots(data);
+        
+        // Filtrera baserat på valda rum
+        const filtered = data.filter((slot: AvailableSlot) =>
+          selectedRoomIds.length === 0 || selectedRoomIds.includes(slot.room.id)
+        );
 
         // Group all times per date
         const grouped: Record<string, AvailableSlot[]> = {};
-        data.forEach((slot) => {
+        filtered.forEach((slot) => {
           const key = slot.date.split("T")[0]; // "2025-10-18"
           if (!grouped[key]) grouped[key] = [];
           grouped[key].push(slot);
@@ -47,7 +64,8 @@ export default function AvailableSlots() {
     }
   
     fetchSlots(); // run function
-  }, []);
+  }, [selectedRoomIds]);
+
 
   const sortedDates = Object.keys(groupedSlots).sort();
  
@@ -97,10 +115,14 @@ export default function AvailableSlots() {
               >
                 {groupedSlots[dateStr].map((slot) => (
                  <button
-                  key={slot.id}
-                  aria-label={`Boka ${slot.room.name}, kapacitet ${slot.room.capacity} personer, ${slot.startTime} till ${slot.endTime}`}
-                  className="text-sm border border-[#00695C] text-[#1C1B1F] rounded-md p-2 text-left hover:bg-[#E0F2F1] transition w-full"
-                >
+                    key={slot.id}
+                    onClick={() => handleSelect(slot.id)}
+                    aria-label={`Boka ${slot.room.name}, kapacitet ${slot.room.capacity} personer, ${slot.startTime} till ${slot.endTime}`}
+                    className={cn(
+                      "text-sm border border-[#00695C] text-[#1C1B1F] rounded-md p-2 text-left hover:bg-[#E0F2F1] transition w-full",
+                      selectedSlotId === slot.id && "bg-[#E0F2F1] border-[#004D40]"
+                    )}
+                  >
                     <p className="text-sm">{slot.room.name} ({slot.room.capacity})</p>
                     <p className="text-sm">{slot.startTime}–{slot.endTime}</p>
                   </button>
