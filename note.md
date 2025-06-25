@@ -73,14 +73,32 @@
 
 - H1: "Välj en tid" ✅
 
+- Intallera Prisma ✅
+  - npm install prisma --save-dev
+  - npm install @prisma/client
+- Initiera Prisma ✅
+  - npx prisma init --datasource-provider sqlite
+- Skapa tabellerna i db och lägg till testdata ✅
+  - npx prisma migrate dev --name init + npx prisma studio
+  - namn: sträng
+  - capacity: int
+  - created_at
+- Migrera databasen ✅
 
+
+- Skapa en Dropdown komponent
 - Dropdown med fem olika mötesrum (checkboxar)
-  - Skapa testdata för att visa upp fem olika mötesrum (från db)
+  - Skapa checkboxar
+  - Hämta testdata från db -> visa i ordning. minst antal personer först
+  - Select label - Uppdateras när klienten väljer alt.
+    - Mötesrum när inget är valt
+    - ett valt rum
+    - 3 valda rum när det är fler än 1
   - Knappar: "Välj" & "Avmarkera"
 
 
 
-  
+
 - Höger/Vänster pilknappar för att bläddra bland datum
 - Visning av datumspann (ex. 18 okt – 20 okt)
 - Kalender med tre kolumner (en per dag)
@@ -109,3 +127,18 @@
 - Snyggt, mobilanpassat, tillgängligt
 - Det ska kännas rätt
 
+
+
+Info about Prisma
+Next steps:
+1. Set the DATABASE_URL in the .env file to point to your existing database. If your database has no tables yet, read https://pris.ly/d/getting-started
+2. Run prisma db pull to turn your database schema into a Prisma schema.
+3. Run prisma generate to generate the Prisma Client. You can then start querying your database.
+4. Tip: Explore how you can extend the ORM with scalable connection pooling, global caching, and a managed serverless Postgres database. Read: https://pris.ly/cli/beyond-orm
+
+More information in our documentation:
+https://pris.ly/d/getting-started
+
+
+## Mini todos
+- Uppdatera readme - lägga till beskrivning gällande db
