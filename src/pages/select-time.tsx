@@ -1,3 +1,5 @@
+import AvailableSlots from "./components/AvailableSlots";
+import Button from "./components/Button";
 import Heading from "./components/Heading";
 import Layout from "./components/Layout";
 import RoomDropdown from "./components/RoomDropdown";
@@ -21,8 +23,10 @@ export default function SelectTime() {
 
 
       {/* Kalender med tre kolumner (en per dag) */}
+      <AvailableSlots />
 
       {/* Knapp till nästa vy: "Nästa" */}
+      <Button ariaLabel="Gå till nästa sida">Nästa</Button>
     </Layout>
   )
 }
