@@ -72,9 +72,15 @@
 ### Sida: Välj en tid
 
 - H1: "Välj en tid" ✅
+
+
 - Dropdown med fem olika mötesrum (checkboxar)
   - Skapa testdata för att visa upp fem olika mötesrum (från db)
   - Knappar: "Välj" & "Avmarkera"
+
+
+
+  
 - Höger/Vänster pilknappar för att bläddra bland datum
 - Visning av datumspann (ex. 18 okt – 20 okt)
 - Kalender med tre kolumner (en per dag)
