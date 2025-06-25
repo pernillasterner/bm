@@ -61,7 +61,7 @@
 ### Preppa
 
 - Skapa en layout som grund för alla sidor ✅
-- Lägg till head för att kunna lägga till title
+- Lägg till head för att kunna lägga till title - tänk på att den ska vara dynamisk. Kunna skicka in props.
 
 ### Startsida
 
