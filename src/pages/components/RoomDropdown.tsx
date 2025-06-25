@@ -22,11 +22,11 @@ export default function RoomDropdown({ onSelect }: Props) {
     async function fetchRooms() {
       try {
         const res = await fetch("/api/rooms");
-        if (!res.ok) throw new Error("Fel vid hämtning");
+        if (!res.ok) throw new Error("Error fetching meeting rooms");
         const data = await res.json();
         setRooms(data); 
       } catch (error) {
-        console.error("Något gick fel:", error);
+        console.error("Something went wrong while fetching rooms:", error);
       }
     }
   
@@ -88,7 +88,7 @@ export default function RoomDropdown({ onSelect }: Props) {
     
       {/* Meetingrooms */}
       {open && (
-          <div className="absolute mt-2 py-4 w-full max-h-96 border border-gray-200 rounded-lg shadow z-10 flex flex-col gap-2">
+          <div className="absolute mt-2 py-4 w-full max-h-96 border border-gray-200 rounded-lg shadow z-10 flex flex-col gap-2 bg-white">
             <ul className="overflow-y-auto max-h-60 px-2">
               {rooms.map((room) => (
                 <li key={room.id} className="px-2 py-2 hover:bg-gray-100 rounded">
