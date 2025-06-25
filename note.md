@@ -102,13 +102,29 @@
 [https://akhilaariyachandra.com/blog/using-clsx-or-classnames-with-tailwind-merge]
 
 
-- Höger/Vänster pilknappar för att bläddra bland datum
-- Visning av datumspann (ex. 18 okt – 20 okt)
+- Skapa lediga tider i db
+  - AvailableSlot - ska ha en relation med room samt bokningar
+  - Lägga till testdata ✅
+  - Visa tillgängliga tider ✅
+  - Sortera dessa efter datum ✅
+  - Visa 3 kolumner (en för varje dag) ✅
+  - Under varje datum: visa tider & mötesrum ✅
+
+
+  - Kunna välja ett rum - ✅
+  - Bookningar 
+
 - Kalender med tre kolumner (en per dag)
   - Visar mötesrum som är tillgängliga
   - Möjlighet att välja ett rum
-  - Funktion för att spara bokningen (namn + tid → till db)
+  - Funktion för att spara bokningen (namn + tid → till db) 
 - Knapp till nästa vy: "Nästa"
+
+
+
+- Höger/Vänster pilknappar för att bläddra bland datum
+- Visning av datumspann (ex. 18 okt – 20 okt)
+
 
 ### Vem bokar
 
@@ -131,18 +147,6 @@
 - Det ska kännas rätt
 
 
-
-Info about Prisma
-Next steps:
-1. Set the DATABASE_URL in the .env file to point to your existing database. If your database has no tables yet, read https://pris.ly/d/getting-started
-2. Run prisma db pull to turn your database schema into a Prisma schema.
-3. Run prisma generate to generate the Prisma Client. You can then start querying your database.
-4. Tip: Explore how you can extend the ORM with scalable connection pooling, global caching, and a managed serverless Postgres database. Read: https://pris.ly/cli/beyond-orm
-
-More information in our documentation:
-https://pris.ly/d/getting-started
-
-
 ## Mini todos
 - Uppdatera readme - lägga till beskrivning gällande db
 - När man avmarkerar alla checkboxar bör man antingen ändra text på "välj" till stäng eller ha ett kryss för att stänga
@@ -152,3 +156,4 @@ https://pris.ly/d/getting-started
 - problem med prisma. lyckas inte hämta data från db /api/rooms 
 Lösning: Prisma genererar klienten till src/generated/prisma istället för till @prisma/client. Ta bort den raden från prisma filen i lib.
 - får fel när jag klickar i checkbox i ett mötesrum
+- TypeError: Cannot read properties of undefined (reading 'findMany') Lösning: Köra npx prisma generate igen
