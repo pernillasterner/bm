@@ -1,0 +1,18 @@
+import { Roboto } from "next/font/google";
+
+const roboto = Roboto({
+  subsets: ["latin"],
+  variable: "--font-roboto",
+});
+
+export default function Layout({children}: { children: React.ReactNode }) {
+  return (
+    <>
+      <div className={`${roboto.className} font-sans`}>
+        <main>
+          {children}
+        </main>
+      </div>
+    </>
+  );
+}

@@ -37,8 +37,8 @@
 
 ## 0. Förberedelse
 
-- Github repo
-- Installera alla nödvändiga paket
+- Github repo ✅
+- Installera alla nödvändiga paket ✅
 - Frontend (Next.js, TailwindCSS, Typescript, Figma)
 - Backend (API-routes, SQLite, Typescript, Prisma)
 
@@ -57,6 +57,11 @@
 - Hämta ikoner till mötesrum dropdown, samt höger/vänster pilknappar
 
 ## 3. Sidor och funktion
+
+### Preppa
+
+- Skapa en layout som grund för alla sidor ✅
+- Lägg till head för att kunna lägga till title
 
 ### Startsida
 
