@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react"
+import { cn } from "@/utils/cn";
 
 type AvailableSlot = {
   id: number;
@@ -54,39 +55,54 @@ export default function AvailableSlots() {
     <div className="mt-4 py-6 flex flex-col h-full">    
       <div className="flex justify-between items-center gap-6 mb-6">
         <button aria-label="Föregående datum">
-          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" className="size-6">
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1" stroke="currentColor" className="size-8">
             <path stroke-linecap="round" stroke-linejoin="round" d="m11.25 9-3 3m0 0 3 3m-3-3h7.5M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" />
           </svg>
         </button>
-        <p className="text-[color:var(--gray-850)] text-sm font-medium">
+        <p className="text-[color:var(--gray-850)]">
           18 okt – 20 okt
         </p>
         <button aria-label="Nästa datum">
-          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" className="size-6">
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1" stroke="currentColor" className="size-8">
             <path stroke-linecap="round" stroke-linejoin="round" d="m12.75 15 3-3m0 0-3-3m3 3h-7.5M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" />
           </svg>
         </button>
       </div>
       
-      <div className="mt-6 border border-[color:var(--gray-400)] rounded-lg overflow-hidden h-full">
-        <div className="grid grid-cols-3 divide-x divide-[color:var(--gray-300)] h-full">
-          {sortedDates.map((dateStr) => (
-            <div 
+      <div className="border border-[color:var(--gray-400)] rounded-lg overflow-hidden h-full">
+        <div className="grid grid-cols-3 h-full">
+          {sortedDates.map((dateStr, i) => (
+            <div
               key={dateStr}
-              className="p-1"
+              className={cn(
+                "h-full flex flex-col",
+                i === 0 && "rounded-tl-lg",
+                i === sortedDates.length - 1 && "rounded-tr-lg"
+              )}
             >
-              <h3 className="font-medium text-md text-[color:var(--gray-850)] text-center py-2">
+              <h3
+                className={cn(
+                  "font-medium text-md text-[color:var(--gray-850)] text-center py-2 border-b border-[color:var(--gray-400)]",
+                  i === 1 && "border-x border-[color:var(--gray-400)]"
+                )}
+              >
                 {formatDate(dateStr)}
               </h3>
 
-              <div className="flex flex-col gap-2">
+              <div
+                className={cn(
+                  "flex flex-col gap-2 p-1",
+                  i === 1 && "border-x border-[color:var(--gray-400)] h-full"
+                )}
+              >
                 {groupedSlots[dateStr].map((slot) => (
-                  <button
-                    key={slot.id}
-                    aria-label={`Boka ${slot.room.name}, kapacitet ${slot.room.capacity} personer, ${slot.startTime} till ${slot.endTime}`}
-                    className="text-base border border-[#00695C] text-[#1C1B1F] rounded-md p-2 text-left text-xs hover:bg-[#E0F2F1] transition w-full">
+                 <button
+                  key={slot.id}
+                  aria-label={`Boka ${slot.room.name}, kapacitet ${slot.room.capacity} personer, ${slot.startTime} till ${slot.endTime}`}
+                  className="text-sm border border-[#00695C] text-[#1C1B1F] rounded-md p-2 text-left hover:bg-[#E0F2F1] transition w-full"
+                >
                     <p className="text-sm">{slot.room.name} ({slot.room.capacity})</p>
-                    <p className="text-sm">{slot.startTime} – {slot.endTime}</p>
+                    <p className="text-sm">{slot.startTime}–{slot.endTime}</p>
                   </button>
                 ))}
               </div>
