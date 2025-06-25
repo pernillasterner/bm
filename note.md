@@ -112,24 +112,30 @@
 
 
   - Kunna välja ett rum - ✅
-  - Bookningar 
+  - Bookningar - ✅
 
-- Kalender med tre kolumner (en per dag)
+- Kalender med tre kolumner (en per dag) ✅
   - Visar mötesrum som är tillgängliga
   - Möjlighet att välja ett rum
   - Funktion för att spara bokningen (namn + tid → till db) 
-- Knapp till nästa vy: "Nästa"
+- Knapp till nästa vy: "Nästa" ✅
 
 
 
-- Höger/Vänster pilknappar för att bläddra bland datum
-- Visning av datumspann (ex. 18 okt – 20 okt)
+- Höger/Vänster pilknappar för att bläddra bland datum ✅
+- Visning av datumspann (ex. 18 okt – 20 okt) ✅
+
 
 
 ### Vem bokar
 
-- H1: "Vem bokar?"
-- Inputfält: "Skriv ditt fullständiga namn här"
+- H1: "Vem bokar?" ✅
+- Inputfält: "Skriv ditt fullständiga namn här" ✅
+
+
+### Bekräfelse
+- Bekräftelse på bokat rum, inkl tid och datum
+
 
 ## OM JAG HINNER
 
