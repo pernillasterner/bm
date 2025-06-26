@@ -1,19 +1,21 @@
-# Compileit kodtest – Boka rum
+# 📘 Compileit Kodtest – Boka Rum
 
-## Färgpalett
+## 🎨 Färgpalett & Design
 
-- Bakgrundsfärg: #ECECEC
-- Primär färg: #00695C (grön)
-- Färg på texten i kalendern, varje mötesrum: #1C1B1F
-- Textfärg – mötesrum dropdown, datum samt datum i kalendern: #212121
-- Rubrik: #000
-- Border – dropdown och kalender: #212121
-- Bakgrundsfärg till knapparna: #1D1D1D
-- Textfärg knappar: #fff
-- Borderfärg på knapparna: #FFF men 10% transparens (rgba 255,255,255,0.1)
+- **Bakgrundsfärg:** `#ECECEC`
+- **Primär färg (grön):** `#00695C`
+- **Textfärger:**
+  - Kalender (mötesrum): `#1C1B1F`
+  - Dropdown/datum: `#212121`
+  - Rubrik: `#000`
+- **Border:** `#212121`
+- **Knappar:**
+  - Bakgrund: `#1D1D1D`
+  - Text: `#fff`
+  - Border: `rgba(255,255,255,0.1)`
 
-## CSS-variabler
-
+### 🎨 CSS-variabler
+```css
 :root {
   --gray-50: #FAFAFA;
   --gray-100: #ECECEC;
@@ -25,141 +27,126 @@
   --teal-600: #00695C;
   --white-10: rgba(255, 255, 255, 0.1);
 }
+```
 
-## Teknisk stack
+---
+
+## 🧱 Teknisk Stack
 
 - Next.js (Page Router)
 - TypeScript
 - Tailwind CSS
-- Google Fonts
+- Google Fonts (Roboto)
 - Prisma + SQLite
 - Netlify
 
-## 0. Förberedelse
+---
 
-- Github repo ✅
-- Installera alla nödvändiga paket ✅
-- Frontend (Next.js, TailwindCSS, Typescript, Figma)
-- Backend (API-routes, SQLite, Typescript, Prisma)
+## ✅ Steg för Steg
 
-## 1. Återkommande komponenter
+### 0. 🔧 Förberedelser
 
-- Knappen
-- Ruta för varje mötesrum i kalendern
-- Sätta upp vilka färger som ska finnas med på designen + Font Roboto
-- Heading – Sätta heading-variant samt storlekar
+- [x] Github repo
+- [x] Installation av alla paket
+- [x] Setup av frontend & backend
+- [x] Prisma init, konfigurera db & testdata
 
-## 2. Tänka på
+### 1. ♻️ Återanvändbara komponenter
 
-- Responsivitet
-- Tillgänglighet
-- Lighthouse
-- Hämta ikoner till mötesrum dropdown, samt höger/vänster pilknappar
+- [x] `Button`
+- [x] `Heading` (rubrikkomponent med storleksvarianter)
+- [x] `RoomBox` (ruta per mötesrum)
+- [x] Färgsystem och typsnitt
 
-## 3. Sidor och funktion
+### 2. 🧠 Att tänka på
 
-### Preppa
+- [x] Responsivitet
+- [x] Tillgänglighet
+- [x] Lighthouse-test
+- [x] Ikoner: mötesrum + navigering
 
-- Skapa en layout som grund för alla sidor ✅
-- Lägg till head för att kunna lägga till title - tänk på att den ska vara dynamisk. Kunna skicka in props. ✅
+---
 
-### Startsida
+## 🗂️ Sidor och Funktioner
 
-- H1: "Boka ett rum" - KOMPONENT!! ✅
-- Knapp: "Boka" → länkas till "Välj en tid"-vyn ✅
+### 📄 Layout
 
+- [x] Gemensam layout-komponent för sidor
+- [x] Dynamisk `<head>` med titel via props
 
-### Sida: Välj en tid
+### 🏠 Startsida
 
-- H1: "Välj en tid" ✅
+- [x] Rubrik: "Boka ett rum"
+- [x] Knapp: "Boka" → navigerar till "Välj en tid"
 
-- Intallera Prisma ✅
-  - npm install prisma --save-dev
-  - npm install @prisma/client
-- Initiera Prisma ✅
-  - npx prisma init --datasource-provider sqlite
-- Skapa tabellerna i db och lägg till testdata ✅
-  - npx prisma migrate dev --name init + npx prisma studio
-  - namn: sträng
-  - capacity: int
-  - created_at
-- Migrera databasen ✅
+### 📅 Välj en tid
 
+- [x] Rubrik: "Välj en tid"
+- [x] Dropdown med mötesrum:
+  - [x] Data från `/api/rooms`
+  - [x] Sortering efter kapacitet
+  - [x] Checkboxar för val
+  - [x] Label uppdateras beroende på val:
+    - "Mötesrum"
+    - "1 valt rum"
+    - "3 valda rum"
+  - [x] Knappar: "Välj" & "Avmarkera"
+  - [x] Pil-ikon till höger
 
-- Skapa en Dropdown komponent
-- Dropdown med fem olika mötesrum (checkboxar)
-  - Testa att hämta data ✅
-  - Skapa checkboxar ✅
-  - Visa data i rätt ordning. minst antal personer först ✅
-  - Select label - Uppdateras när klienten väljer alt. ✅
-    - Mötesrum när inget är valt
-    - ett valt rum
-    - 3 valda rum när det är fler än 1
-  - Knappar: "Välj" & "Avmarkera" ✅
-  - Lägga till pilikon till höger om label ✅
+- [x] Kalender:
+  - [x] Tre kolumner (dagar)
+  - [x] Visa mötesrum under varje datum
+  - [x] Tider & rum visas korrekt sorterat
+  - [x] Möjlighet att välja tid & rum
+  - [x] Nästa-knapp → "Vem bokar?"
 
-- Installera clsx för att kombinera klasser - tailwind-merge ✅
-[https://akhilaariyachandra.com/blog/using-clsx-or-classnames-with-tailwind-merge]
+- [x] Navigering:
+  - [x] Höger/Vänster-pilknappar
+  - [x] Visar datumspann (ex. "18 okt – 20 okt")
 
+### 👤 Vem bokar?
 
-- Skapa lediga tider i db
-  - AvailableSlot - ska ha en relation med room samt bokningar
-  - Lägga till testdata ✅
-  - Visa tillgängliga tider ✅
-  - Sortera dessa efter datum ✅
-  - Visa 3 kolumner (en för varje dag) ✅
-  - Under varje datum: visa tider & mötesrum ✅
+- [x] Rubrik: "Vem bokar?"
+- [x] Input: "Skriv ditt fullständiga namn här"
 
+### ✅ Bekräftelse
 
-  - Kunna välja ett rum - ✅
-  - Bookningar - ✅
+- [x] Visar bekräftelse (id just nu)
+- [ ] Visa namn, datum, rum (TODO)
 
-- Kalender med tre kolumner (en per dag) ✅
-  - Visar mötesrum som är tillgängliga
-  - Möjlighet att välja ett rum
-  - Funktion för att spara bokningen (namn + tid → till db) 
-- Knapp till nästa vy: "Nästa" ✅
+---
 
+## ✨ Om Jag Hinner (Bonus)
 
+- [ ] Dark/light mode
+- [ ] Deployment till Netlify
+- [ ] Färdig bekräftelsevy (namn, datum, rum)
+- [ ] Validera formulär
 
-- Höger/Vänster pilknappar för att bläddra bland datum ✅
-- Visning av datumspann (ex. 18 okt – 20 okt) ✅
+---
 
+## 📌 Mini-Todos
 
+- [ ] Uppdatera README – förklara databas
+- [ ] Bättre UI på dropdown – stäng med kryss/label
+- [ ] Datumlogik: använd statisk lista istället för db-datum
+- [ ] Visa även tomma dagar i kalender
 
-### Vem bokar
+---
 
-- H1: "Vem bokar?" ✅
-- Inputfält: "Skriv ditt fullständiga namn här" ✅
+## 🐛 Problem & Lösningar
 
+- **Problem:** Prisma hämtar inte data från `/api/rooms`
+  - **Lösning:** Prisma genererade klient till `src/generated/prisma`, ta bort override i lib
 
-### Bekräfelse
-- Bekräftelse på bokat rum, inkl tid och datum
+- **Problem:** Checkbox ger `TypeError: Cannot read properties of undefined (reading 'findMany')`
+  - **Lösning:** Kör `npx prisma generate` igen
 
+---
 
-## OM JAG HINNER
+## 📦 Installerade Paket
 
-- Dark and light mode
-- Deployment till Netlify
-- Bekräftelsemeddelande med:
-  - Namn
-  - Datum
-  - Mötesrum
+- `prisma`, `@prisma/client`
+- `clsx`, `tailwind-merge`
 
-## Att komma ihåg
-
-- Steg för steg
-- Snyggt, mobilanpassat, tillgängligt
-- Det ska kännas rätt
-
-
-## Mini todos
-- Uppdatera readme - lägga till beskrivning gällande db
-- När man avmarkerar alla checkboxar bör man antingen ändra text på "välj" till stäng eller ha ett kryss för att stänga
-
-
-## Problem
-- problem med prisma. lyckas inte hämta data från db /api/rooms 
-Lösning: Prisma genererar klienten till src/generated/prisma istället för till @prisma/client. Ta bort den raden från prisma filen i lib.
-- får fel när jag klickar i checkbox i ett mötesrum
-- TypeError: Cannot read properties of undefined (reading 'findMany') Lösning: Köra npx prisma generate igen
+---
