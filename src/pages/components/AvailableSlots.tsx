@@ -26,6 +26,7 @@ function formatDate(dateStr: string) {
 }
 
 export default function AvailableSlots({ onSelect, selectedRoomIds }: Props) {
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const [slots, setSlots] = useState<AvailableSlot[]>([]);
   const [groupedSlots, setGroupedSlots] = useState<Record<string, AvailableSlot[]>>({});
   const [selectedSlotId, setSelectedSlotId] = useState<number | null>(null);
