@@ -5,6 +5,7 @@ type ButtonProps = {
   ariaLabel?: string
   onClick?: () => void // tar emot en funktion så fort event triggas
   className?: string
+  disabled?: boolean;
 }
 
 export default function Button({

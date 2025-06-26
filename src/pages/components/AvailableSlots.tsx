@@ -4,6 +4,7 @@ import { cn } from "@/utils/cn";
 type AvailableSlot = {
   id: number;
   room: {
+    id: number;
     name: string;
     capacity: number;
   };
@@ -53,7 +54,7 @@ export default function AvailableSlots({ onSelect, selectedRoomIds }: Props) {
 
         // Group all times per date
         const grouped: Record<string, AvailableSlot[]> = {};
-        filtered.forEach((slot) => {
+        filtered.forEach((slot: AvailableSlot) => {
           const key = slot.date.split("T")[0]; // "2025-10-18"
           if (!grouped[key]) grouped[key] = [];
           grouped[key].push(slot);
